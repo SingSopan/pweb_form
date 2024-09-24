@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pendaftaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .result h2 {
+            text-align: center;
+        }
+        .result p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="result">
+    <h2>Hasil Pendaftaran</h2>
+    <p><strong>Nama:</strong> <span id="resultName"></span></p>
+    <p><strong>Umur:</strong> <span id="resultAge"></span></p>
+    <p><strong>Tanggal Lahir:</strong> <span id="resultBirthdate"></span></p>
+    <p><strong>Gender:</strong> <span id="resultGender"></span></p>
+    <p><strong>Lulusan:</strong> <span id="resultEducation"></span></p>
+    <p><strong>Deskripsi Diri:</strong> <span id="resultDescription"></span></p>
+    <button onclick="goBack()">Kembali ke Formulir</button>
+</div>
+
+<script>
+    // Ambil data dari localStorage dan tampilkan
+    document.getElementById("resultName").textContent = localStorage.getItem("name");
+    document.getElementById("resultAge").textContent = localStorage.getItem("age");
+    document.getElementById("resultBirthdate").textContent = localStorage.getItem("birthdate");
+    document.getElementById("resultGender").textContent = localStorage.getItem("gender");
+    document.getElementById("resultEducation").textContent = localStorage.getItem("education");
+    document.getElementById("resultDescription").textContent = localStorage.getItem("description");
+
+    function goBack() {
+        window.location.href = "form.html";
+    }
+</script>
+
+</body>
+</html>

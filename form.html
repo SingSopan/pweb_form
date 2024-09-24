@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran</title>
+    <style>
+        /* Style seperti sebelumnya */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .form-check {
+            margin-bottom: 10px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-group button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-group .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-group .clear-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formulir Pendaftaran</h2>
+
+<form id="myForm">
+    <div class="form-group">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Umur:</label>
+        <input type="number" id="age" name="age" required>
+    </div>
+
+    <div class="form-group">
+        <label for="birthdate">Tanggal Lahir:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Pilih Gender</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Lulusan:</label>
+        <div class="form-check">
+            <input type="checkbox" id="sd" name="education" value="SD">SD<br>
+            <input type="checkbox" id="smp" name="education" value="SMP">SMP<br>
+            <input type="checkbox" id="sma" name="education" value="SMA">SMA<br>
+            <input type="checkbox" id="kuliah" name="education" value="Kuliah">Kuliah<br>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Deskripsi Diri:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+    </div>
+
+    <div class="btn-group">
+        <button type="submit" class="submit-btn">Submit</button>
+        <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+    </div>
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        // Mengambil nilai dari form
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const birthdate = document.getElementById("birthdate").value;
+        const gender = document.getElementById("gender").value;
+        
+        const education = [];
+        if (document.getElementById("sd").checked) education.push("SD");
+        if (document.getElementById("smp").checked) education.push("SMP");
+        if (document.getElementById("sma").checked) education.push("SMA");
+        if (document.getElementById("kuliah").checked) education.push("Kuliah");
+        
+        const description = document.getElementById("description").value;
+        
+        // Simpan data ke localStorage
+        localStorage.setItem("name", name);
+        localStorage.setItem("age", age);
+        localStorage.setItem("birthdate", birthdate);
+        localStorage.setItem("gender", gender);
+        localStorage.setItem("education", education.join(", "));
+        localStorage.setItem("description", description);
+
+        // Redirect ke halaman hasil
+        window.location.href = "result.html";
+    });
+
+    function clearForm() {
+        document.getElementById("myForm").reset();
+    }
+</script>
+
+</body>
+</html>
